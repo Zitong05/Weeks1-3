@@ -22,5 +22,6 @@ public class NewBehaviourScript : MonoBehaviour
             speed = speed * -1;
         }
         transform.position = pos;
+        pos = transform.position;
     }
 }

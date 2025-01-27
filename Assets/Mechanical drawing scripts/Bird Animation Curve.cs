@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JeepAnimationcurve : MonoBehaviour
+public class BirdAnimationCurve : MonoBehaviour
 {
     public AnimationCurve curve; // AnimationCurve
 
 
     public float t = 0f; // time of changing the scale of the object
     public Vector3 originalScale; // original scale
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,9 +29,10 @@ public class JeepAnimationcurve : MonoBehaviour
             t -= Time.deltaTime; // decrease scaleTime
         }
 
-        
+
 
         // change object scale
         transform.localScale = originalScale * (1 - curve.Evaluate(t) * 0.5f);
     }
 }
+

@@ -7,7 +7,7 @@ public class JeepAnimationcurve : MonoBehaviour
     public AnimationCurve curve; // AnimationCurve
 
 
-    public float durationTime = 0f; // duration time
+    public float scaleTime = 0f; // time of changing the scale of the object
     public Vector3 originalScale; // original scale
 
     // Start is called before the first frame update
@@ -19,18 +19,20 @@ public class JeepAnimationcurve : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 根据是否按住 W 键调整 scaleTime
+        scaleTime = Mathf.Clamp01(scaleTime); // Limit the time between 0 and 1
+        // increase or decrease when hoding or releasing W
         if (Input.GetKey(KeyCode.W))
         {
-            durationTime += Time.deltaTime; // increasing time
+            scaleTime += Time.deltaTime; // increase scaleTime
         }
         else
         {
-            durationTime -= Time.deltaTime; // decreasing time
+            scaleTime -= Time.deltaTime; // decrease scaleTime
         }
 
+        
 
         // change object scale
-        transform.localScale = originalScale * (1 - curve.Evaluate(durationTime) * 0.5f);
+        transform.localScale = originalScale * (1 - curve.Evaluate(scaleTime) * 0.5f);
     }
 }

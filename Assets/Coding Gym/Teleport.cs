@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    int counter = 0;
+    public float counter = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,11 +12,15 @@ public class Teleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (counter == 0)
-        {
-
-        }
         Vector2 newposition = transform.position;
-        newposition = Random.insideUnitCircle;
+
+        counter += Time.deltaTime;
+
+        if(counter >= 3)
+        {
+            counter = 0;
+            
+            newposition = Random.insideUnitCircle;
+        }     
     }
 }

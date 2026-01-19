@@ -5,19 +5,24 @@ public class SpriteChanger : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Color col;
+    public Sprite[] barrels = new Sprite[3];
+    public int randomNumber;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //PickARandomColour();
+        //spriteRenderer.sprite = mySprite;
+        PickARandomSprite();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if(Keyboard.current.anyKey.wasPressedThisFrame == true)
-        //{
-        //    PickARandomColour();
-        //}
+        if (Keyboard.current.anyKey.wasPressedThisFrame == true)
+        {
+            //PickARandomColour();
+            PickARandomSprite();
+        }
 
         //get the mouse position
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -38,6 +43,14 @@ public class SpriteChanger : MonoBehaviour
     void PickARandomColour()
     {
         spriteRenderer.color = Random.ColorHSV();
+    }
+
+    void PickARandomSprite()
+    {
+        //pick a random number
+        randomNumber = Random.Range(0, barrels.Length);
+        //assign that sprite
+        spriteRenderer.sprite = barrels[randomNumber];
     }
 
 }

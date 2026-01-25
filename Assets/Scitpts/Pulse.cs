@@ -20,8 +20,6 @@ public class Pulse : MonoBehaviour
             t = 0;
         }     
         float y = curve.Evaluate(t);
-        // Vector3.one is the same as a vector with 1s in every column
-        Vector3 newSize = Vector3.one * y;
-        transform.localScale = Vector3.one * curve.Evaluate(t);
+        transform.localScale = Vector2.one * curve.Evaluate(t);
     }
 }
